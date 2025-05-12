@@ -12,22 +12,22 @@ REGEX="^[a-z]+\\(([a-z0-9-]+)(,[a-z0-9-]+)*\\):\s[a-z][^\\.]*$"
 current_commit_msg=$(cat "$1")
 
 # Obtém a mensagem de commit anterior
-# previous_commit_msg=$(git log -1 --pretty=%B)
+previous_commit_msg=$(git log -1 --pretty=%B)
 
-# # Verifica se já existe pelo menos um commit
-# if git rev-parse --verify HEAD >/dev/null 2>&1; then
-#   # Obtém a mensagem do commit anterior
-#   previous_commit_msg=$(git log -1 --pretty=%B)
+# Verifica se já existe pelo menos um commit
+if git rev-parse --verify HEAD >/dev/null 2>&1; then
+  # Obtém a mensagem do commit anterior
+  previous_commit_msg=$(git log -1 --pretty=%B)
 
-#   # Verifica se a mensagem atual é igual à anterior
-#   if [ "$current_commit_msg" = "$previous_commit_msg" ]; then
-#     echo "❌ A mensagem de commit é igual à anterior."
-#     echo "💡 Por favor, altere a mensagem de commit antes de confirmar."
-#     exit 1
-#   fi
-# else
-#   echo "ℹ️ Nenhum commit anterior encontrado (primeiro commit). Ignorando verificação de duplicidade."
-# fi
+  # Verifica se a mensagem atual é igual à anterior
+  if [ "$current_commit_msg" = "$previous_commit_msg" ]; then
+    echo "❌ A mensagem de commit é igual à anterior."
+    echo "💡 Por favor, altere a mensagem de commit antes de confirmar."
+    exit 1
+  fi
+else
+  echo "ℹ️ Nenhum commit anterior encontrado (primeiro commit). Ignorando verificação de duplicidade."
+fi
 
 
 # Verifica o formato da mensagem de commit usando a expressão regular

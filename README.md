@@ -19,7 +19,7 @@ Siga os passos abaixo para instalar e rodar o projeto localmente:
 
 ```bash
 # Clone o repositório
-git clone <URL-do-repositório>
+git clone https://github.com/RodrigoBLima/design-system
 
 # Acesse o diretório do projeto
 cd design-system
