@@ -19,7 +19,7 @@ jobs:
           registry-url: https://registry.npmjs.org/
           
       - name: Autenticar no NPM
-        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}" > ~/.npmrc
 
       - name: Instalar dependências
         run: npm install
@@ -30,4 +30,4 @@ jobs:
       - name: Publicar no NPM
         run: npm publish --access public
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
