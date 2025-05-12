@@ -1,0 +1,46 @@
+# .husky/commit-msg
+
+# ✅ Regras obrigatórias:
+# - tipo(escopo): descrição
+# - tipo = palavra em minúsculas
+# - escopo = uma ou mais palavras em minúsculas/separadas por hífen, separadas por vírgula (sem vírgulas no final, nem escopos vazios)
+# - dois-pontos sem espaço antes e com um espaço depois
+# - descrição começa em minúscula e não termina com ponto final
+REGEX="^[a-z]+\\(([a-z0-9-]+)(,[a-z0-9-]+)*\\):\s[a-z][^\\.]*$"
+
+# Obtém a mensagem de commit atual
+current_commit_msg=$(cat "$1")
+
+# Obtém a mensagem de commit anterior
+# previous_commit_msg=$(git log -1 --pretty=%B)
+
+# # Verifica se já existe pelo menos um commit
+# if git rev-parse --verify HEAD >/dev/null 2>&1; then
+#   # Obtém a mensagem do commit anterior
+#   previous_commit_msg=$(git log -1 --pretty=%B)
+
+#   # Verifica se a mensagem atual é igual à anterior
+#   if [ "$current_commit_msg" = "$previous_commit_msg" ]; then
+#     echo "❌ A mensagem de commit é igual à anterior."
+#     echo "💡 Por favor, altere a mensagem de commit antes de confirmar."
+#     exit 1
+#   fi
+# else
+#   echo "ℹ️ Nenhum commit anterior encontrado (primeiro commit). Ignorando verificação de duplicidade."
+# fi
+
+
+# Verifica o formato da mensagem de commit usando a expressão regular
+if ! grep -qE "$REGEX" "$1"; then
+  echo "❌ Formato de mensagem de commit inválido."
+  echo "💡 Esperado: tipo(escopo): descrição"
+  echo "🔒 Regras:"
+  echo "   - tipo e escopo devem estar em minúsculas"
+  echo "   - escopo permite hífens e múltiplos escopos separados por vírgulas (sem vírgulas no final)"
+  echo "   - sem espaço antes dos dois-pontos, exatamente um espaço depois"
+  echo "   - descrição começa em minúscula e não termina com ponto final (ou seja, '.')"
+  exit 1
+fi
+
+# Executa o commitlint
+npx --no-install commitlint --edit "$1"
