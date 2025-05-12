@@ -24,6 +24,14 @@ module.exports = {
           { name: "perf:     Melhorias de performance", value: "perf" },
           { name: "test:     Adição ou correção de testes", value: "test" },
           {
+            name: "ci:     Adição ou modificação de pipelines de integração",
+            value: "ci",
+          },
+          {
+            name: "cd:     Adição ou modificação de pipelines de delivery",
+            value: "cd",
+          },
+          {
             name: "chore:    Alterações no processo de build ou ferramentas auxiliares",
             value: "chore",
           },
