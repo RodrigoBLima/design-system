@@ -32,7 +32,26 @@ npm install
 
 ## 📦 Como Usar os Componentes via NPM
 
-Realizar integração
+1. **Instale o pacote via NPM (ou Yarn):**
+
+```bash
+npm install @barbosa-dev-front/design-system
+
+# ou
+
+yarn add @barbosa-dev-front/design-system
+
+```
+
+2. **Importe o componente desejado:**
+
+```tsx
+import { Button } from '@barbosa-dev-front/design-system/button';
+
+export default function MyComponent() {
+  return <Button variant="primary">Clique aqui</Button>;
+}
+```
 
 ---
 
