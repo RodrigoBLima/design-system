@@ -1,6 +1,0 @@
-#!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
-
-npm version patch
-git add .
-git commit -am "chore(setup): bump version"

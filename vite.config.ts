@@ -10,10 +10,10 @@ export default defineConfig({
     tsconfigPaths(),
     react(),
     dts({
-      include: ['src/ui'],
+      include: ['src/components/ui'],
       exclude: ['**/*.stories.ts*'],
       beforeWriteFile: (filePath, content) => ({
-        filePath: filePath.replace('/ui', ''),
+        filePath: filePath.replace('/components/ui', ''),
         content,
       }),
     }),

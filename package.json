@@ -1,6 +1,6 @@
 {
   "name": "@barbosa-dev-front/design-system",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "type": "module",
   "author": {
     "name": "Rodrigo Barbosa",
@@ -13,16 +13,16 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc && vite build",
     "test": "vitest",
     "test:coverage": "vitest run --coverage src",
     "lint": "biome check ./src",
     "format": "biome format --write ./src",
     "format:check": "biome check --write ./src",
-    "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "release": "standard-version",
+    "pre-commit": "npm --no-git-tag-version version patch && git add .",
+    "prepublish": "rm -rf ./dist && npm run build",
     "prepare": "husky",
     "commit": "git-cz"
   },
@@ -30,6 +30,12 @@
     "dist",
     "tailwind.config.ts"
   ],
+  "exports": {
+    "./button": {
+      "import": "./dist/button/index.es.js",
+      "types": "./dist/button/button.d.ts"
+    }
+  },
   "release": {
     "branches": [
       "main"
@@ -80,12 +86,6 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
-    }
-  },
-  "exports": {
-    "./button": {
-      "import": "./dist/button/index.es.js",
-      "types": "./dist/button/button.d.ts"
     }
   },
   "dependencies": {
