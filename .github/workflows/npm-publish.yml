@@ -18,11 +18,13 @@ jobs:
           node-version: 20
           registry-url: https://registry.npmjs.org/
 
-      - name: Configure NPM auth
-        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}" > ~/.npmrc
-
-      - name: Install dependencies
+      - name: Instalar dependências
         run: npm install
 
-      - name: Publish package
+      - name: Build
+        run: npm run build
+
+      - name: Publicar no NPM
         run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
