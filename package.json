@@ -1,6 +1,6 @@
 {
   "name": "@barbosa-dev-front/design-system",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "type": "module",
   "author": {
     "name": "Rodrigo Barbosa",
@@ -34,6 +34,10 @@
     "./button": {
       "import": "./dist/button/index.es.js",
       "types": "./dist/button/button.d.ts"
+    },
+    "./input": {
+      "import": "./dist/input/index.es.js",
+      "types": "./dist/input/input.d.ts"
     }
   },
   "release": {
