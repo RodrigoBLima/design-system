@@ -23,6 +23,7 @@ export default defineConfig({
       entry: [
         path.resolve(__dirname, 'src/components/ui/button/button.tsx'),
         path.resolve(__dirname, 'src/components/ui/input/input.ts'),
+        path.resolve(__dirname, 'src/components/ui/alert/alert.ts'),
         path.resolve(__dirname, 'src/styles/globals.css'),
       ],
       formats: ['es'],

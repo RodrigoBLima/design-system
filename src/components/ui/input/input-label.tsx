@@ -6,7 +6,10 @@ export interface InputLabelProps {
 const InputLabel = (props: InputLabelProps) => {
   const { labelText, labelFor } = props;
   return (
-    <label htmlFor={labelFor} className="text-sm text-neutral">
+    <label
+      htmlFor={labelFor}
+      className="self-stretch justify-center text-sm text-content-neutral-500 font-semibold leading-tight tracking-tight"
+    >
       {labelText}
     </label>
   );

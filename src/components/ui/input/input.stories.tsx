@@ -7,9 +7,32 @@ export default {
   title: "Moléculas/Input",
   tags: ["autodocs"],
   component: InputField,
-  argTypes: {},
+  argTypes: {
+    success: {
+      control: "boolean",
+      description: "Estado de sucesso do input",
+    },
+    error: {
+      control: "boolean",
+      description: "Estado de erro do input",
+    },
+  },
   args: {},
 } as Meta<InputProps>;
+
+export function Default(args: InputProps) {
+  return (
+    <InputContainer>
+      <InputLabel labelText="Label exemplo" labelFor="input-example-default" />
+      <InputField
+        id="input-example-default"
+        name="input-example-default"
+        placeholder="Digite aqui..."
+        {...args}
+      />
+    </InputContainer>
+  );
+}
 
 export function Disabled() {
   return (
